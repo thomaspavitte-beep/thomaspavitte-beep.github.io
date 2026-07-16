@@ -1,0 +1,211 @@
+/* Thomas Pavitte Beep — one typeface, two weights, near-black on near-white. */
+
+:root {
+  --paper: #fafaf7;
+  --ink: #161616;
+  --muted: #757570;
+  --rule: #e4e4df;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121212;
+    --ink: #eeeee9;
+    --muted: #8f8f89;
+    --rule: #2a2a28;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vh, 6rem) clamp(1.25rem, 5vw, 2.5rem) 4rem;
+  max-width: 42rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Header */
+
+header { margin-bottom: clamp(3rem, 9vh, 5.5rem); }
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.5rem, 4.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.intro {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* The list */
+
+.projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--rule);
+}
+
+.projects li { border-top: 1px solid var(--rule); }
+
+.row {
+  display: grid;
+  grid-template-columns: 2.25rem 1fr auto;
+  column-gap: 0.75rem;
+  padding: 1.15rem 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.glyph {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.1rem;
+  color: var(--ink);
+}
+
+.text { min-width: 0; }
+
+.title {
+  display: block;
+  font-weight: 600;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.desc {
+  display: block;
+  margin-top: 0.15rem;
+  color: var(--muted);
+}
+
+.year {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+a.row:hover .title,
+a.row:focus-visible .title { text-decoration-color: currentColor; }
+
+a.row:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+
+/* Built, not public yet */
+
+span.row { opacity: 0.42; }
+
+/* Glyph hover animations — one per shape, under 300ms */
+
+.glyph .g {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a.row--dots:hover .g,
+  a.row--dots:focus-visible .g { animation: g-pulse 0.28s ease; }
+
+  a.row--circles .g,
+  a.row--lines .g { stroke-dasharray: 1; }
+
+  a.row--circles:hover .g,
+  a.row--circles:focus-visible .g { animation: g-draw 0.28s ease; }
+
+  a.row--lines:hover .g,
+  a.row--lines:focus-visible .g { animation: g-draw 0.24s ease; }
+
+  a.row--spirals .g { transition: transform 0.28s ease; }
+  a.row--spirals:hover .g,
+  a.row--spirals:focus-visible .g { transform: rotate(90deg); }
+
+  a.row--other .g { transition: transform 0.24s ease; }
+  a.row--other:hover .g,
+  a.row--other:focus-visible .g { transform: rotate(45deg); }
+}
+
+@keyframes g-pulse {
+  50% { transform: scale(1.35); }
+}
+
+@keyframes g-draw {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Hover video preview — square cursor-following card */
+
+#vidcard {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 250px;
+  height: 250px;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+#vidcard.on { opacity: 1; }
+
+#vidcard video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Footer */
+
+footer {
+  margin-top: 4rem;
+  font-size: 0.875rem;
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+footer a:hover {
+  color: var(--ink);
+  border-color: currentColor;
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .row { grid-template-columns: 2rem 1fr; }
+  .year { display: none; }
+}
+
+/* 404 */
+
+.notfound p { color: var(--muted); }
+.notfound a { color: var(--ink); }
