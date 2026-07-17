@@ -51,14 +51,6 @@ const projects = [
     shape: "lines"
   },
   {
-    title: "Chromatic Drift",
-    description: "Five thousand dots drifting very slowly, for people who need to sit down.",
-    url: "https://thomaspavitte-beep.github.io/chromatic-drift/",
-    year: 2026,
-    shape: "dots",
-    video: "video/placeholder.mp4"
-  },
-  {
     title: "Press Check",
     description: "A four colour printing press for watching, not printing.",
     url: "https://thomaspavitte-beep.github.io/press-check/",
