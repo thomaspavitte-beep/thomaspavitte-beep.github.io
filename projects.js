@@ -44,13 +44,6 @@ const projects = [
     shape: "dots"
   },
   {
-    title: "Concentric",
-    description: "Arranges product photos into rings until they look expensive.",
-    url: "https://thomaspavitte-beep.github.io/concentric/",
-    year: 2026,
-    shape: "circles"
-  },
-  {
     title: "Bands of Colour",
     description: "A machine that writes Sol LeWitt instructions and then follows them.",
     url: "https://thomaspavitte-beep.github.io/bands-of-colour/",
