@@ -10,7 +10,8 @@ const projects = [
     description: "A typewriter for a tile font whose letters all secretly join up.",
     url: "https://thomaspavitte-beep.github.io/tiletype/",
     year: 2026,
-    shape: "lines"
+    shape: "lines",
+    video: "video/tiletype.mp4"
   },
   {
     title: "Secret Garden",
@@ -41,14 +42,16 @@ const projects = [
     description: "The pin art desk toy, minus the desk, the pins and the toy.",
     url: "https://thomaspavitte-beep.github.io/pin-art/",
     year: 2026,
-    shape: "dots"
+    shape: "dots",
+    video: "video/pin-art.mp4"
   },
   {
     title: "Bands of Colour",
     description: "A machine that writes Sol LeWitt instructions and then follows them.",
     url: "https://thomaspavitte-beep.github.io/bands-of-colour/",
     year: 2026,
-    shape: "lines"
+    shape: "lines",
+    video: "video/bands-of-colour.mp4"
   },
   {
     title: "Press Check",
