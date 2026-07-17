@@ -6,6 +6,13 @@
 
 const projects = [
   {
+    title: "Tiles Type",
+    description: "A typewriter for a tile font whose letters all secretly join up.",
+    url: "https://thomaspavitte-beep.github.io/tiletype/",
+    year: 2026,
+    shape: "lines"
+  },
+  {
     title: "Secret Garden",
     description: "A screen full of flowers, birds and bugs that would rather you looked away.",
     url: "https://thomaspavitte-beep.github.io/secret-garden/",
@@ -32,16 +39,9 @@ const projects = [
   {
     title: "Pin Art",
     description: "The pin art desk toy, minus the desk, the pins and the toy.",
-    url: null,
+    url: "https://thomaspavitte-beep.github.io/pin-art/",
     year: 2026,
     shape: "dots"
-  },
-  {
-    title: "Induction",
-    description: "Colour that changes as you walk past, after Carlos Cruz-Diez.",
-    url: null,
-    year: 2026,
-    shape: "lines"
   },
   {
     title: "Concentric",
@@ -74,54 +74,12 @@ const projects = [
     video: "video/press-check.mp4"
   },
   {
-    title: "Chromatic Layers",
-    description: "A painting taken apart into sheets of glass, then put back.",
-    url: null,
-    year: 2026,
-    shape: "other"
-  },
-  {
-    title: "The Whole World",
-    description: "Three hundred holes in a gallery wall become a telescope, after Chris Sauter.",
-    url: null,
-    year: 2026,
-    shape: "circles"
-  },
-  {
     title: "Phase Portrait",
     description: "A portrait hidden in stripes until a second sheet of stripes slides past.",
     url: "https://thomaspavitte-beep.github.io/phase-portrait/",
     year: 2026,
     shape: "lines",
     video: "video/phase-portrait.mp4"
-  },
-  {
-    title: "Barrier Grid",
-    description: "Motion smuggled through slots in a sheet of black lines.",
-    url: null,
-    year: 2026,
-    shape: "lines"
-  },
-  {
-    title: "Spaghetti Physics",
-    description: "A pot of interactive noodles. Lines, gravity, chaos.",
-    url: null,
-    year: 2026,
-    shape: "lines"
-  },
-  {
-    title: "Truchet World",
-    description: "Patterned cubes rain from the sky and stack into towers.",
-    url: null,
-    year: 2026,
-    shape: "circles"
-  },
-  {
-    title: "Ornamental Tiles",
-    description: "Ornament built from tiles that must agree at their edges.",
-    url: null,
-    year: 2026,
-    shape: "lines"
   },
   {
     title: "Spiroglyphics",
