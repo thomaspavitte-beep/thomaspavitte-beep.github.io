@@ -1,36 +1,7 @@
-// Renders the projects array as the list. Glyphs are inline SVG built from the shape value.
+// Renders the projects array as the list.
 
 (function () {
   "use strict";
-
-  // Archimedean spiral path, centred on (cx, cy)
-  function spiralPath(cx, cy, turns, rMax) {
-    var steps = Math.round(turns * 36);
-    var pts = [];
-    for (var i = 0; i <= steps; i++) {
-      var t = i / steps;
-      var a = t * turns * 2 * Math.PI - Math.PI / 2;
-      var r = t * rMax;
-      pts.push((cx + r * Math.cos(a)).toFixed(2) + " " + (cy + r * Math.sin(a)).toFixed(2));
-    }
-    return "M" + pts.join(" L");
-  }
-
-  var STROKE = 'fill="none" stroke="currentColor" stroke-width="1.5"';
-
-  var GLYPHS = {
-    dots: '<circle class="g" cx="11" cy="11" r="4.5" fill="currentColor"/>',
-    circles: '<circle class="g" cx="11" cy="11" r="7.5" ' + STROKE + ' pathLength="1"/>',
-    spirals: '<path class="g" d="' + spiralPath(11, 11, 2.6, 7.8) + '" ' + STROKE + ' stroke-linecap="round"/>',
-    lines: '<line class="g" x1="2.5" y1="11" x2="19.5" y2="11" ' + STROKE + ' stroke-linecap="round" pathLength="1"/>',
-    other: '<rect class="g" x="4.5" y="4.5" width="13" height="13" ' + STROKE + "/>"
-  };
-
-  function esc(s) {
-    return String(s).replace(/[&<>"]/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
-    });
-  }
 
   // Hover video previews: a square card that follows the cursor.
   // One shared card, lerped toward the pointer; videos only load on first hover,
@@ -88,26 +59,59 @@
     });
   }
 
+  // Theme kinship: hovering a row keeps rows that share one of its themes bright
+  // and fades the rest, so related experiments quietly find each other.
+  function attachKinship(list, rowEls) {
+    rowEls.forEach(function (entry) {
+      entry.row.addEventListener("mouseenter", function () {
+        list.classList.add("focusing");
+        rowEls.forEach(function (other) {
+          var kin =
+            other === entry ||
+            (entry.themes || []).some(function (t) {
+              return (other.themes || []).indexOf(t) !== -1;
+            });
+          other.row.classList.toggle("kin", kin);
+        });
+      });
+      entry.row.addEventListener("mouseleave", function () {
+        list.classList.remove("focusing");
+        rowEls.forEach(function (other) {
+          other.row.classList.remove("kin");
+        });
+      });
+    });
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
   var list = document.getElementById("projects");
   var frag = document.createDocumentFragment();
+  var total = projects.length;
+  var rowEls = [];
 
-  projects.forEach(function (p) {
-    var shape = GLYPHS.hasOwnProperty(p.shape) ? p.shape : "other";
+  projects.forEach(function (p, i) {
     var li = document.createElement("li");
     var row = document.createElement(p.url ? "a" : "span");
-    row.className = "row row--" + shape;
+    row.className = "row";
     if (p.url) row.href = p.url;
+    var count = String(total - i).padStart(2, "0");
     row.innerHTML =
-      '<svg class="glyph" viewBox="0 0 22 22" aria-hidden="true">' + GLYPHS[shape] + "</svg>" +
       '<span class="text">' +
       '<span class="title">' + esc(p.title) + "</span>" +
       '<span class="desc">' + esc(p.description) + "</span>" +
       "</span>" +
-      '<span class="year">' + esc(p.year) + "</span>";
+      '<span class="count">' + count + "</span>";
     if (p.video && HOVER_OK) attachHoverVideo(row, p.video);
+    rowEls.push({ row: row, themes: p.themes });
     li.appendChild(row);
     frag.appendChild(li);
   });
 
   list.appendChild(frag);
+  if (HOVER_OK) attachKinship(list, rowEls);
 })();
