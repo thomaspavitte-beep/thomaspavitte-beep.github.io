@@ -6,6 +6,13 @@
 
 const projects = [
   {
+    title: "Wiggly Worms",
+    description: "Press and hold to grow a worm that climbs, wiggles and sings.",
+    url: "https://thomaspavitte-beep.github.io/wiggly-worms/",
+    video: "video/wiggly-worms.mp4",
+    themes: ["toys", "nature"]
+  },
+  {
     title: "Paper Bouquet",
     description: "A new bouquet of cut paper flowers, grown while you watch.",
     url: "https://thomaspavitte-beep.github.io/paper-bouquet/",
