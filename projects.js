@@ -6,6 +6,13 @@
 
 const projects = [
   {
+    title: "Dip",
+    description: "A brush that holds real paint. It runs out, it mixes, it drips.",
+    url: "https://thomaspavitte-beep.github.io/dip/",
+    video: "video/dip.mp4",
+    themes: ["toys"]
+  },
+  {
     title: "Wiggly Worms",
     description: "Press and hold to grow a worm that climbs, wiggles and sings.",
     url: "https://thomaspavitte-beep.github.io/wiggly-worms/",
