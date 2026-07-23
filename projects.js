@@ -6,6 +6,13 @@
 
 const projects = [
   {
+    title: "Magnet",
+    description: "Hold to pull a cloud of toy blocks into a letter, then let it scatter.",
+    url: "https://thomaspavitte-beep.github.io/magnet/",
+    video: "video/magnet.mp4",
+    themes: ["toys", "type"]
+  },
+  {
     title: "Beads",
     description: "Any picture, hung as a curtain of beads you can reach through and swing.",
     url: "https://thomaspavitte-beep.github.io/beads/",
