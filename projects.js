@@ -6,6 +6,13 @@
 
 const projects = [
   {
+    title: "Beads",
+    description: "Any picture, hung as a curtain of beads you can reach through and swing.",
+    url: "https://thomaspavitte-beep.github.io/beads/",
+    video: "video/beads.mp4",
+    themes: ["toys"]
+  },
+  {
     title: "Dip",
     description: "A brush that holds real paint. It runs out, it mixes, it drips.",
     url: "https://thomaspavitte-beep.github.io/dip/",
